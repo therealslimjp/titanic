@@ -1,0 +1,13 @@
+spark:
+  app_name: MyApp
+  master: local[*]
+modules:
+  reader:
+    class: "KafkaReader"
+    config:
+      bootstrap_servers: "localhost:9092"
+      topic: "testTopic"
+      starting_offsets: "earliest"
+      ending_offsets: "latest"
+  processor:
+    class: "KafkaToIceberg"
